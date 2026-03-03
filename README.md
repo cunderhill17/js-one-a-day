@@ -61,9 +61,14 @@ Each entry typically includes:
 
 ## 🔍 Topic Areas
 
-Topics may include (but are not limited to):
+Topics for March 3, 2026 - March 8, 2026:
 
-- Will update with a list of weekly topics as I go
+- every()
+- filter()
+- map()
+- find()
+- findIndex()
+- includes()
 
 ---
 
