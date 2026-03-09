@@ -61,7 +61,7 @@ console.log([1 , , 3].includes(undefined));
 N/A
 
 
-## Questions I have: (March 7, 2026)
+## Questions I have: (March 8, 2026)
 
 1. What is `same-value-zero equality` ?
 
