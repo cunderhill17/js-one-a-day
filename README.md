@@ -61,14 +61,15 @@ Each entry typically includes:
 
 ## 🔍 Topic Areas
 
-Topics for March 3, 2026 - March 8, 2026:
+Topics for March 9, 2026 - March 15, 2026:
 
-- every()
-- filter()
-- map()
-- find()
-- findIndex()
-- includes()
+- Network Requests
+- HTTP
+- JSON
+- Fetch API
+- Asynchronous JavaScript
+- Async / Await 
+- Dynamic Scripting with JavaScript
 
 ---
 
