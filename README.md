@@ -1,4 +1,4 @@
-# 🧠 One a Day – JavaScript Journal
+# 🧠 One A Day – JavaScript Journal
 
 A personal challenge: **learn one new thing about JavaScript every day** and document it publicly.
 
@@ -61,15 +61,37 @@ Each entry typically includes:
 
 ## 🔍 Topic Areas
 
-Topics for March 9, 2026 - March 15, 2026:
+**Upcoming Topics:** 
 
-- Network Requests
-- HTTP
-- JSON
-- Fetch API
-- Asynchronous JavaScript
-- Async / Await 
-- Dynamic Scripting with JavaScript
+- Local Storage
+- Error Handling
+- Closures
+- Prototypes and Prototype inheritence
+- ES6 Classes
+- Functional Programming patterns
+- Promise Patterns
+- Event Loop 
+- Debouncing
+- Throttling
+- Memoization
+- Currying
+- Functional Composition
+- Deep vs. Shallow Copy
+- Optional chaining and nullish coalescing 
+- Restructuring advanced patterns
+- Generators
+- Immutable data patterns 
+- Classes 
+- Constructors 
+- Methods
+- Encapsulation 
+- Array Manipulation (advanced)
+- Shuffle Algorithm (Fisher-Yates shuffle)
+- Finite state machines
+- Event driven programming
+- Real time networking
+- Server Basics
+- Separation of Logic vs UI
 
 ---
 
