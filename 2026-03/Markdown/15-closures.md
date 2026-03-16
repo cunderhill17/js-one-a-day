@@ -130,7 +130,7 @@ You gain access to `count` by assigning the returned function to `counter`, but 
 - while inside the `TDZ`, the variable has not been initialized with a value and any attempt to access it will result in a `ReferenceError`
 
 
-## Questions I have: (March 14, 2026)
+## Questions I have: (March 16, 2026)
 
 1. What is `data encapsulation`?
 2. What is `global namespace`? 
