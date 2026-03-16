@@ -1,4 +1,4 @@
-# Async / Await
+# JavaScript Challenge: Property Filter 
 
 1. Premise of the Challenge
 2. What concepts did it reinforce? 
