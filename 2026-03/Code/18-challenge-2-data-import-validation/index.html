@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <title>CVS Data Import & Validation Tool</title>
+</head>
+<body>
+    
+    <h1>Data Import & Validation</h1>
+
+    <!-- FORM TO UPLOAD DATA -->
+    <form id="uploadForm">
+        <label for="csvFile">Upload Users</label>
+        <input type="file" id="csvFile" accept=".csv, text/csv" required>
+        <button>Upload</button>
+    </form>
+
+    <!-- VALID USERS -->
+    <section>
+        <h2>Valid Users</h2>
+        
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Employee Role</th>
+            </tr>
+            <tbody id="validUsersTable"></tbody>
+        </table>
+    </section>
+
+    <!-- NOT VALID USERS -->
+    <section>
+        <h2>Non-Valid Users</h2>
+        <h4>The following employees have something wrong with the information included</h4>
+        
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Employee Role</th>
+            </tr>
+            <tbody id="notValidUsersTable"></tbody>
+        </table>
+    </section>
+
+
+    <script src="main.js"></script>
+</body>
+</html>
