@@ -63,35 +63,29 @@ Each entry typically includes:
 
 **Upcoming Topics:** 
 
-- Local Storage
-- Error Handling
-- Closures
-- Prototypes and Prototype inheritence
-- ES6 Classes
-- Functional Programming patterns
-- Promise Patterns
-- Event Loop 
-- Debouncing
-- Throttling
-- Memoization
-- Currying
-- Functional Composition
-- Deep vs. Shallow Copy
-- Optional chaining and nullish coalescing 
-- Restructuring advanced patterns
-- Generators
-- Immutable data patterns 
-- Classes 
-- Constructors 
-- Methods
-- Encapsulation 
-- Array Manipulation (advanced)
-- Shuffle Algorithm (Fisher-Yates shuffle)
-- Finite state machines
-- Event driven programming
-- Real time networking
-- Server Basics
-- Separation of Logic vs UI
+1. Event Loop
+2. Promise Patterns
+3. Error Handling
+4. Event-Driven Programming
+5. Debouncing
+6. Throttling
+7. Optional Chaining and Nullish Coalescing
+8. Deep vs Shallow Copy
+9. Local Storage
+10. Functional Programming Patterns
+11. Immutable Data Patterns
+12. Functional Composition
+13. Currying
+14. Memoization
+15. Array Manipulation (Advanced)
+16. Restructuring Advanced Patterns
+17. Shuffle Algorithm (Fisher-Yates)
+18. Separation of Logic vs UI
+19. Encapsulation
+20. Generators
+21. Finite State Machines
+22. Server Basics
+23. Real-Time Networking
 
 ---
 
