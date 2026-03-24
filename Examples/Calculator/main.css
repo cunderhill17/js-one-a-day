@@ -49,6 +49,16 @@ body {
     cursor: pointer;
 }
 
+#leftBracket, #rightBracket {
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(15, 73, 83);
+    color: white;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
 #numOperators {
     display: flex;
     flex-wrap: wrap;

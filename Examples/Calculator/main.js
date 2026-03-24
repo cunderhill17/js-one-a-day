@@ -1,17 +1,3 @@
-/* ---TEST CASES--- */
-
-/*
-    Currently 3 / 6 Tests Pass
-
-    1. how to handle multiple operations in the same equation (eg. 8 + 5 * 2)
-    2. How to handle negative numbers (-5 * 7)
-    3. Division by 0 (8 / 0) --> PASS (under the condition of a single operator)
-    4. Multiple operators in a row (6+-9) --> 
-    5. Order of operations (BEDMAS)
-    6. Multiple decimal points in a number (6.5.1 + 7) --> PASS 
-*/
-
-
 /* ---VARIABLES--- */
 
 const nums = document.querySelectorAll('.numButton');
@@ -20,39 +6,24 @@ const equalsBtn = document.querySelector('#equalsButton');
 const clearBtn = document.querySelector('#clearViewport');
 const viewport = document.querySelector('#viewportContent');
 
-const operations = {
-    "+": (a,b) => a+b,
-    "-": (a,b) => a-b,
-    "*": (a,b) => a*b,
-    "/": (a,b) => b === 0 ? 'undefined' : a/b,
-    "%": (a,b) => a%b,
-};
-
 
 /* ---FUNCTIONS--- */
 
 //Adds a number to the viewport
 function insertNum() {
     const value = this.dataset.value;
-    let totalDecimals = 0;
-    let totalOperators = 0;
 
-    //checks that there aren't more decimal places than there are operators 
-    if(value === '.') {
-        for(let i = 0; i < viewport.textContent.length; i++) {
-            if(viewport.textContent[i] === '.') {
-                totalDecimals++;
-            }
-            if((viewport.textContent[i] === '/') || (viewport.textContent[i] === '*') || (viewport.textContent[i] === '%') || (viewport.textContent[i] === '-') || (viewport.textContent[i] === '+')) {
-                totalOperators++;
-            }
-        }
+    //Splits the viewport string into parts based on the various operators
+    if (value === '.') {
+        // Get the current number (everything after the last operator)
+        let parts = viewport.textContent.split(/[+\-*/%]/);
+        let currentNumber = parts[parts.length - 1];
 
-        if(totalDecimals > totalOperators) {
+        // If current number already has a decimal, stop
+        if (currentNumber.includes('.')) {
             return;
         }
     }
-
 
     viewport.textContent += `${value}`;
 }
@@ -82,6 +53,7 @@ function clearViewport() {
 
 //Finds the total of two numbers and an operator
 function findTotal() {
+    // const totalArray = viewport.textContent.split(/([+\-*/%])/);
     const totalArray = viewport.textContent.split(/([+\-*/%])/);
     const arr = [];
 
@@ -97,9 +69,45 @@ function findTotal() {
         }
     });
 
-    let result = operations[arr[1].value](arr[0].value, arr[2].value);
+    // First pass: *, /, %
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i].type === 'operator' && ['*','/','%'].includes(arr[i].value)) {
+            let left = arr[i-1].value;
+            let right = arr[i+1].value;
+            let res;
+            switch(arr[i].value) {
+                case '*': 
+                    res = left * right; 
+                    break;
+                case '/': 
+                    res = right === 0 ? 'undefined' : left / right; 
+
+                    if(res === 'undefined') {
+                        viewport.textContent = 'undefined';
+                        return; // stop the function early
+                    }
+
+                    break;
+                case '%': 
+                    res = left % right; 
+                    break;
+            }
+            arr.splice(i-1, 3, {value: res, type:'Number'});
+            i--; // Step back to re-check at new index
+        }
+    }
+
+    // Second pass: +, -
+    let result = arr[0].value;
+    for (let i = 1; i < arr.length; i += 2) {
+        let operator = arr[i].value;
+        let nextNumber = arr[i+1].value;
+        if(operator === '+') result += nextNumber;
+        if(operator === '-') result -= nextNumber;
+    }
 
     viewport.textContent = `${result}`;
+
 }
 
 function isNumeric(str) {
