@@ -1,4 +1,4 @@
-# JavaScript Challenge: Task Manager 
+# JavaScript Challenge: Calculator
 
 1. Premise of the Challenge
 2. What concepts did it reinforce? 
