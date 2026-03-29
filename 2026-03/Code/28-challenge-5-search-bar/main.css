@@ -1,0 +1,44 @@
+.hidden {
+    display: none;
+}
+
+#searchCon {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#searchBar {
+    width: 250px;
+    padding: 10px;
+}
+
+section {
+    margin-top: 25px;
+}
+
+#characterSearch {
+    padding: 10px;
+    border: 1px dashed black;
+    margin-top: 15px;
+    width: 250px;
+}
+
+.character {
+    padding: 5px;
+    background-color: bisque;
+    color: rgb(68, 8, 8);
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+#characterProfile {
+    padding: 10px;
+    border: 1px solid peachpuff;
+    border-radius: 5px;
+    width: 150px;
+}
+
+#characterProfile p {
+    color: rgb(121, 86, 55);
+}
