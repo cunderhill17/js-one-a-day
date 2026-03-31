@@ -1,0 +1,68 @@
+#systemCon, #userColors, #userChoices {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 15px 0px;
+    padding: 10px 20px;
+    border: 1px solid black;
+    width: 50%;
+    height: 125px;
+}
+
+.color {
+    width: 75px;
+    height: 90px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.red {
+    background-color: rgb(180, 17, 17);
+}
+
+.blue {
+    background-color: rgb(27, 190, 255);
+}
+
+.green {
+    background-color: rgb(22, 194, 22);
+}
+
+.orange {
+    background-color: rgb(255, 123, 0);
+}
+
+.purple {
+    background-color: rgb(224, 28, 224);
+}
+
+.pink {
+    background-color: rgb(255, 149, 185);
+}
+
+.userColor {
+    cursor: pointer;
+}
+
+#gameBtns {
+    display: flex;
+    gap: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    font-weight: 600;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(19, 97, 0);
+    color: white;
+    cursor: pointer;
+}
+
+.disabled {
+    border: 1px dashed black;
+    background: darkgray;
+    opacity: 0.5;
+    cursor: not-allowed;
+}
