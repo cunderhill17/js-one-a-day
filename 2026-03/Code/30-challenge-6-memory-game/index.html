@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <title>Memory Game</title>
+</head>
+<body>
+
+    <h1>Memory Game</h1>
+
+    <!-- container to hold the system generated sequence -->
+    <div id="systemCon"></div>
+
+    <!-- container to hold the sequence that the user makes -->
+    <div id="userChoices"></div>
+
+    <!-- Container to hold the colors the user can choose from -->
+    <div id="userColors">
+        <div class="userColor color red" data-color="red" data-disabled="true"></div>
+        <div class="userColor color blue" data-color="blue" data-disabled="true"></div>
+        <div class="userColor color green" data-color="green" data-disabled="true"></div>
+        <div class="userColor color purple" data-color="purple" data-disabled="true"></div>
+        <div class="userColor color orange" data-color="orange" data-disabled="true"></div>
+        <div class="userColor color pink" data-color="pink" data-disabled="true"></div>
+    </div>
+
+    <!-- Game Button Controls -->
+    <div id="gameBtns">
+        <button id="startGame">START GAME</button>
+        <button id="submit">SUBMIT</button>
+        <button id="nextLevel">NEXT LEVEL</button>
+        <button id="restartGame">RESTART</button>
+    </div>
+
+    <div id="resultsCon"></div>
+
+    <script src="main.js"></script>
+</body>
+</html>
