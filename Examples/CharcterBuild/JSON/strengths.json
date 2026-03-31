@@ -1,0 +1,6 @@
+[
+    {"strength": "High IQ", "consequence": "Finished Highschool with a high GPA", "cause": "value"},
+    {"strength": "Ability to empathize", "consequence": "Forms lasting relationships", "cause": "value"},
+    {"strength": "Athletic", "consequence": "Able to get a scholarship to a good college", "cause": "value"},
+    {"strength": "Personable", "consequence": "Great in job interviews", "cause": "value"}
+]
