@@ -1,0 +1,9 @@
+{
+  "manifest_version": 3,
+  "name": "Notes On The Go",
+  "version": "1.0",
+  "description": "Chrome extension to allow for spontaneous note taking.",
+  "action": {
+    "default_popup": "popup/popup.html"
+  }
+}

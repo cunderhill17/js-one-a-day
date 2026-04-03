@@ -1,0 +1,48 @@
+.extensionCon {
+    width: 400px;
+}
+
+.heading {
+    color: rgb(182, 155, 122);
+}
+
+input {
+    width: 300px;
+    background-color: transparent;
+    border: 1px solid rgb(134, 111, 83);
+    padding: 10px;
+    color: rgb(134, 111, 83);
+}
+
+#noteCon {
+    margin-top: 15px;
+}
+
+.individualNote {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.note {
+    font-size: 16px;
+    color: rgb(61, 61, 61);
+}
+
+button {
+    height: fit-content;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    background-color: rgb(134, 111, 83);
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+
+button:hover {
+    border: 1px solid rgb(134, 111, 83);
+    background-color: white;
+    color: rgb(134, 111, 83);
+}
