@@ -1,48 +1,111 @@
+body {
+    width: 320px;
+    padding: 15px;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* --- Container --- */
 .extensionCon {
-    width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
+/* --- Heading --- */
 .heading {
-    color: rgb(182, 155, 122);
+    font-size: 18px;
+    color: #6b4f3f; /* warm brown */
+    text-align: center;
+    margin-bottom: 8px;
 }
 
+/* --- Input field --- */
 input {
-    width: 300px;
-    background-color: transparent;
-    border: 1px solid rgb(134, 111, 83);
+    width: 90%;
     padding: 10px;
-    color: rgb(134, 111, 83);
+    border: 1px solid #c2a68f;
+    border-radius: 6px;
+    background-color: #fff;
+    font-size: 14px;
+    color: #3d3d3d;
+    outline: none;
+    transition: border 0.2s;
 }
 
+input:focus {
+    border-color: #8f6247;
+    box-shadow: 0 0 4px rgba(143, 98, 71, 0.4);
+}
+
+/* --- Notes container --- */
 #noteCon {
-    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 300px;
+    overflow-y: auto;
 }
 
+/* --- Individual note --- */
 .individualNote {
     display: flex;
-    gap: 10px;
+    justify-content: space-between;
     align-items: center;
+    background-color: #fff;
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1px solid #e0d6c8;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    transition: background 0.2s;
 }
 
+.individualNote:hover {
+    background-color: #f5f1ed;
+}
+
+/* --- Note text --- */
 .note {
-    font-size: 16px;
-    color: rgb(61, 61, 61);
+    font-size: 14px;
+    color: #3d3d3d;
+    flex: 1;
+    word-break: break-word;
+    margin-right: 10px;
 }
 
+/* --- Buttons --- */
 button {
-    height: fit-content;
     padding: 5px 10px;
     border: none;
-    border-radius: 3px;
-    background-color: rgb(134, 111, 83);
+    border-radius: 5px;
+    font-size: 13px;
     font-weight: 600;
-    color: white;
     cursor: pointer;
-    transition: all .2s ease-in-out;
+    transition: all 0.2s ease-in-out;
 }
 
-button:hover {
-    border: 1px solid rgb(134, 111, 83);
-    background-color: white;
-    color: rgb(134, 111, 83);
+button.edit {
+    background-color: #8f6247;
+    color: #fff;
+}
+
+button.edit:hover {
+    background-color: #fff;
+    color: #8f6247;
+    border: 1px solid #8f6247;
+}
+
+button.delete {
+    background-color: #d9534f;
+    color: #fff;
+    margin-left: 5px;
+}
+
+button.delete:hover {
+    background-color: #fff;
+    color: #d9534f;
+    border: 1px solid #d9534f;
 }
