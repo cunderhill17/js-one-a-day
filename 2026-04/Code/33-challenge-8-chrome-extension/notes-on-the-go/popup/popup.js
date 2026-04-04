@@ -4,7 +4,8 @@ const newNoteForm = document.querySelector('#newNoteForm');
 const newNoteInput = document.querySelector('#newNote');
 const notesCon = document.querySelector('#noteCon');
 
-let notesList = JSON.parse(localStorage.getItem("notes")) || [];
+let notesList = [];
+
 
 const maxLength = 500;
 
@@ -18,71 +19,82 @@ function addNote(e) {
     if(newNoteInput.value.trim() === '') return;
 
     let userInput = newNoteInput.value;
-    let trimmedInput = userInput.slice(0, maxLength);
+    let trimmedInput = userInput.slice(0, maxLength); //keeps the note to a maximum length
 
-    notesList.push(trimmedInput);
+    const myNote = {
+        id: Date.now(), //gives a unique value to use as the ID
+        value: trimmedInput
+    };
+
+    notesList.push(myNote);
     newNoteInput.value = '';
 
     //store notes in local storage 
-    localStorage.setItem("notes", JSON.stringify(notesList));
+    saveNotes(notesList);
 
-    viewNotes();
+    //uses the most recent note stored in the array
+    appendNote(notesList.length - 1);
 }
 
 
 
 
-//Adds the notes to the notes container so they can be viewed, edited, & deleted
+//Adds all notes when the extension first loads
 function viewNotes() {
     notesCon.innerHTML = '';
 
     for(let i = 0; i < notesList.length; i++) {
-        let newDiv = document.createElement('div');
-        let newP = document.createElement('p');
-        let editBtn = document.createElement('button');
-        let deleteBtn = document.createElement('button');
-
-        //Add classes needed for styling
-        newDiv.classList.add('individualNote');
-        newP.classList.add('note');
-        editBtn.classList.add('edit');
-        deleteBtn.classList.add('delete');
-
-        //Add a dataset 'id' & eventListener to both buttons for functionality later
-        editBtn.dataset.id = `${i}`;
-        //editBtn.addEventListener('click', editNote);
-        editBtn.textContent = 'Edit';
-        editBtn.dataset.status = 'false';
-
-        deleteBtn.dataset.id = `${i}`;
-        //deleteBtn.addEventListener('click', deleteNote);
-        deleteBtn.textContent = 'Delete';
-
-        newP.dataset.id = `${i}`;
-        newP.textContent = notesList[i];
-
-        //append elements to individualNote div
-        newDiv.appendChild(newP);
-        newDiv.appendChild(editBtn);
-        newDiv.appendChild(deleteBtn);
-
-        //append the note to the notes container
-        notesCon.appendChild(newDiv);
+        appendNote(i);
     }
+}
+
+//Creates the structure for a single note
+function appendNote(i) {
+    let newDiv = document.createElement('div');
+    let newP = document.createElement('p');
+    let editBtn = document.createElement('button');
+    let deleteBtn = document.createElement('button');
+
+    //Add classes needed for styling
+    newDiv.classList.add('individualNote');
+    newP.classList.add('note');
+    editBtn.classList.add('edit');
+    deleteBtn.classList.add('delete');
+
+    //Add a dataset 'id' & eventListener to both buttons for functionality later
+    editBtn.dataset.id = `${notesList[i].id}`;
+    editBtn.textContent = 'Edit';
+    editBtn.dataset.status = 'false';
+
+    deleteBtn.dataset.id = `${notesList[i].id}`;
+    deleteBtn.textContent = 'Delete';
+
+    newP.dataset.id = `${notesList[i].id}`;
+    newP.textContent = notesList[i].value;
+
+    //append elements to individualNote div
+    newDiv.appendChild(newP);
+    newDiv.appendChild(editBtn);
+    newDiv.appendChild(deleteBtn);
+
+    //append the note to the notes container
+    notesCon.appendChild(newDiv);
 }
 
 
 
 
 //Deletes a note
-function deleteNote(id) {
-    const noteId = id;
-    notesList.splice(Number(noteId), 1);
+function deleteNote(e, id) {
+    const parentEl = e.target.parentElement;
 
-    //Update notes in local storage 
-    localStorage.setItem("notes", JSON.stringify(notesList));
+    notesList = notesList.filter(note => note.id !== Number(id));
 
-    viewNotes();
+    // Update storage
+    saveNotes(notesList);
+
+    //remove the deleted element from the DOM
+    parentEl.remove();
 }
 
 
@@ -90,7 +102,7 @@ function deleteNote(id) {
 
 //Allows the user to edit a note
 function editNote(e, id) {
-    const noteId = id;
+    const noteId = Number(id);
     const newContent = e.target.parentElement.querySelector('.note');
 
     if (e.target.dataset.status !== 'true') {
@@ -104,7 +116,7 @@ function editNote(e, id) {
         let trimmedInput = '';
 
         if (updatedContent.trim() === '') {
-            deleteNote(noteId);
+            deleteNote(e, noteId);
             return;
         } else {
             trimmedInput = updatedContent.slice(0, maxLength);
@@ -115,17 +127,32 @@ function editNote(e, id) {
 
         newContent.contentEditable = false;
 
-        notesList[noteId] = trimmedInput;
+        const note = notesList.find(note => note.id === noteId);
+        if (note) {
+            note.value = trimmedInput;
+        }
+
     }
 
     //Updates notes in local storage 
-    localStorage.setItem("notes", JSON.stringify(notesList));
+    saveNotes(notesList);
+}
+
+//retrieves notes when the extension first loads
+async function getNotes() {
+  const result = await chrome.storage.local.get(["notes"]);
+  notesList = result.notes || [];
+}
+
+//used to save notes to chrome storage
+async function saveNotes(notesList) {
+  await chrome.storage.local.set({ notes: notesList });
 }
 
 
 
-/* ---EVENT LISTENERS--- */
 
+/* ---EVENT LISTENERS--- */
 newNoteForm.addEventListener('submit', addNote);
 
 //Attaches a single event listener to the notes container, rather than a new event listener for every note
@@ -137,10 +164,17 @@ notesCon.addEventListener('click', (e) => {
     }
 
     if (e.target.classList.contains('delete')) {
-        deleteNote(id);
+        deleteNote(e, id);
     }
 });
 
 
+
+
 /* ---INITIALIZATION--- */
-viewNotes();
+(async () => {
+    await getNotes();
+    viewNotes();
+})();
+
+
