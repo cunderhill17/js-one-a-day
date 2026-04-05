@@ -24,13 +24,25 @@ class Character {
     }
 
     viewCharacterTrait(id) {
-        return this._traits.getCharacterTrait(id);
+        let strength = this._traits.getCharacterTrait(id);
+
+        return strength.strength;
     }
 
     get magic() {
-        return this._magic;
+        return this._magic.name;
     }
 }
+
+
+
+
+
+
+
+
+
+
 
 //builds the trait list that each character has access to, and gives the ability to update it
 class Traits {
@@ -73,13 +85,19 @@ class Traits {
     }
 }
 
+
+
+
+
+
+
 //generates a random magic ability for each new character
 class MagicAbility {
     static magicAbility = {
-        1: {name: 'water magic', description: 'description of magic', id: 1},
-        2: {name: 'fire magic', description: 'description of magic', id: 2},
-        3: {name: 'earth magic', description: 'description of magic', id: 3},
-        4: {name: 'blood magic', description: 'description of magic', id: 4},
+        1: {name: 'Water Magic', description: 'description of magic', id: 1},
+        2: {name: 'Fire Magic', description: 'description of magic', id: 2},
+        3: {name: 'Earth Magic', description: 'description of magic', id: 3},
+        4: {name: 'Blood Magic', description: 'description of magic', id: 4},
     }
 
     static addMagicAbility() {
