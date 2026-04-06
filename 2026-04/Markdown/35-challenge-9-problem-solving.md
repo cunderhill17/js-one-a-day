@@ -99,4 +99,4 @@ console.log(subjects.last());
 
 ## Link to Example JS File
 
-- [**Code Files: JS**](../Code/33-challenge-8-problem-solving.js)
+- [**Code Files: JS**](../Code/35-challenge-9-problem-solving.js)
