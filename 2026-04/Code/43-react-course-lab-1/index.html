@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Library</title>
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+    </style>
+
+</head>
+<body>
+
+
+    <div id="root"></div>
+
+
+
+    <!-- React Script Map -->
+    <script type="importmap">
+        {
+            "imports": {
+                "react": "https://esm.sh/react",
+                "react-dom/client": "https://esm.sh/react-dom/client"
+            }
+        }
+    </script>
+
+    <!-- Holds the book and film information -->
+    <script>
+        class Book {
+            constructor(title, author) {
+                this.title = title
+                this.author = author
+            }
+
+            toString() {
+                return `${this.title}, by ${this.author}`
+            }
+        }
+
+        class Film {
+            constructor(name, genre, blurb) {
+                this.name = name
+                this.genre = genre
+                this.blurb = blurb
+            }
+
+            toString() {
+                return `${this.name} [${this.genre}], ${this.blurb}`
+            }
+        }
+
+        const books = [
+            new Book('Millennium', 'Stieg Larsson'),
+            new Book('A Christmas Carol', 'Charles Dickens'),
+            new Book('The Son', 'Jo Nesbo'),
+        ]
+
+        const films = [
+            new Film('Airplane', 'Comedy', 'Classic plane spoof'),
+            new Film('Skyfall', 'Adventure', 'Bond spy yarn'),
+            new Film('Love Actually', 'RomCom', ' Hugh Grant playing Hugh Grant')
+        ]
+    </script>
+
+    <!-- creates the element that will be rendered in the UI -->
+    <script type="module">
+        import React from "react";
+        import { createRoot } from "react-dom/client";
+
+        const booksList = React.createElement('ul', null, 
+            books.map((book, i) => React.createElement('li', {key: i, title: book.toString()}, book.title))
+        );
+
+        const filmsList = React.createElement('ul', null, 
+            films.map((film, i) => React.createElement('li', {key: i, title: film.toString()}, film.name))
+        );
+        
+        const myLibrary = React.createElement('div', null,
+            React.createElement('h1', null, 'My Library'),
+            React.createElement('h2', null, 'Books'),
+            booksList,
+            React.createElement('h2', null, 'Films'),
+            filmsList
+        );
+
+        const root = createRoot(document.getElementById('root'));
+
+        root.render(myLibrary);
+        
+    </script>
+
+</body>
+</html>
